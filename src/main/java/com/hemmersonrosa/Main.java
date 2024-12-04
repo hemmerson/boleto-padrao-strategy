@@ -11,6 +11,11 @@ public class Main {
 
             String caminhoArquivo = Paths.get(Objects.requireNonNull(Main.class.getResource("/banco-brasil-1.csv")).toURI()).toString();
             processarBoletos.processar(caminhoArquivo);
+
+            caminhoArquivo = Paths.get(Objects.requireNonNull(Main.class.getResource("/bradesco-1.csv")).toURI()).toString();
+            processarBoletos.setLeituraRetorno(new LeituraRetornoBradesco());
+            processarBoletos.processar(caminhoArquivo);
+
         } catch (Exception e) {
             System.err.println("Erro ao executar o processamento: " + e.getMessage());
         }
